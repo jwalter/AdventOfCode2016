@@ -8,8 +8,8 @@ namespace AdventOfCode.Library.Tests
 		[Test()]
 		public void North()
 		{
-			Direction newDirection = Day01.GetNewDirection(Direction.North);
-			Assert.AreSame(Direction.North, newDirection);
+			Heading newDirection = Day01.GetNewDirection(Heading.North);
+			Assert.AreSame(Heading.North, newDirection);
 		}
 	}
 }

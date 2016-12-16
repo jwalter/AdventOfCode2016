@@ -9,7 +9,7 @@ namespace AdventOfCode.Library
 		{
 		}
 
-		public static Heading GetNewDirection(Heading direction) {
+		public static Heading GetNewDirection(Heading heading) {
 			Contract.Ensures(Contract.Result<Heading>() != null);
 			return Heading.North;
 		}
