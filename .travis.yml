@@ -1,2 +1,9 @@
 language: csharp
 solution: AdventOfCode.sln
+
+install:
+  - nuget restore AdventOfCode.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release AdventOfCode.sln
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./AdventOfCode.Library.Tests/bin/Release/AdventOfCode.Library.Tests.dll
