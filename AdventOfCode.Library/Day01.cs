@@ -10,10 +10,38 @@ namespace AdventOfCode.Library
 		}
 
 		public static Heading GetNewHeading(Heading heading, Direction direction) {
-			return Heading.West;
+			if (direction == Direction.Left)
+			{
+				return TurnLeft(heading);
+			}
+			else
+			{
+				return TurnRight(heading);
+			}
 		}
 
-	}
+		static Heading TurnLeft(Heading heading)
+		{
+			switch (heading)
+			{
+				case Heading.North:
+					return Heading.West;
+				default:
+					return Heading.North;
+			}
+		}
+
+		static Heading TurnRight(Heading heading)
+		{
+			switch (heading)
+			{
+				case Heading.North:
+					return Heading.East;
+				default:
+					return Heading.North;
+			}
+		}
+}
 
 	public enum Heading
 	{

@@ -8,8 +8,12 @@ namespace AdventOfCode.Library.Tests
 		[Test()]
 		public void North_ToLeft_IsWest()
 		{
-			Heading newHeading = Day01.GetNewHeading(Heading.North, Direction.Left);
-			Assert.AreEqual(Heading.West, newHeading);
+			Assert.AreEqual(Heading.West, Day01.GetNewHeading(Heading.North, Direction.Left));
+		}
+		[Test()]
+		public void North_ToRight_IsEast()
+		{
+			Assert.AreEqual(Heading.East, Day01.GetNewHeading(Heading.North, Direction.Right));
 		}
 	}
 }
