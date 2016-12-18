@@ -9,18 +9,18 @@ namespace AdventOfCode.Library
 		{
 		}
 
-		public static Heading GetNewHeading(Heading heading) {
-			Contract.Ensures(Contract.Result<Heading>() != null);
-			return Heading.North;
+		public static Heading GetNewHeading(Heading heading, Direction direction) {
+			return Heading.West;
 		}
 
 	}
 
-	public class Heading
+	public enum Heading
 	{
-		public static Heading North { get; internal set; }
-		public static Heading West { get; internal set; }
-		public static Heading South { get; internal set; }
-		public static Heading East { get; internal set; }
+		North, East, South, West
+	}
+	public enum Direction
+	{
+		Left, Right
 	}
 }
