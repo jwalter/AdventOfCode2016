@@ -1,19 +1,45 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 
 namespace AdventOfCode.Library
 {
+
 	public class Day01
 	{
-		public int ProcessInput(string input)
+		public Tuple<int, int> ProcessInput(string input)
 		{
 			Tuple<int, int> location = new Tuple<int, int>(0, 0);
 			Heading heading = Heading.North;
+			var visitedLocations = new Dictionary<Tuple<int, int>, bool>();
+			Tuple<int, int> firstRevisited = null;
 			foreach (var navigationCommand in input.Split(','))
 			{
 				heading = GetNewHeading(heading, GetDirection(navigationCommand.Trim()[0]));
-				location = Move(location, heading, GetDistance(navigationCommand));
+				int distance = GetDistance(navigationCommand);
+				while (distance-- > 0)
+				{
+					location = Move(location, heading, 1);
+					if (firstRevisited == null)
+					{
+						if (visitedLocations.ContainsKey(location))
+						{
+							firstRevisited = location;
+						}
+						else
+						{
+							visitedLocations[location] = true;
+						}
+					}
+				
+				}
+
 			}
+			return new Tuple<int, int>(DistanceTo(location), DistanceTo(firstRevisited));
+		}
+
+		int DistanceTo(Tuple<int, int> location)
+		{
 			return Math.Abs(location.Item1) + Math.Abs(location.Item2);
 		}
 
@@ -23,7 +49,8 @@ namespace AdventOfCode.Library
 			return Direction.Right;
 		}
 
-		public static Heading GetNewHeading(Heading heading, Direction direction) {
+		public static Heading GetNewHeading(Heading heading, Direction direction)
+		{
 			if (direction == Direction.Left)
 			{
 				return TurnLeft(heading);
@@ -85,7 +112,7 @@ namespace AdventOfCode.Library
 					return Heading.North;
 			}
 		}
-}
+	}
 
 	public enum Heading
 	{
