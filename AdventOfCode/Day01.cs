@@ -10,6 +10,7 @@ namespace AdventOfCode
 		{
 			var result = new Day01().ProcessInput(DAY1);
 			Console.WriteLine("Day01 A: {0}, B:D {1}", result.Item1, result.Item2);
+            Console.ReadKey();
 		}
 	}
 }
